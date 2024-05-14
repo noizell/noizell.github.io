@@ -1,14 +1,23 @@
 <html>
-<button class="fancy-btn" id="openPetSim">Pet Simulation</button>
+<section class="layout">
+  <div><button class="fancy-btn" id="openPetSim">Pet Simulation</button></div>
+  <div><button class="fancy-btn" id="openDrivingSim">Driving Simulation</button></div>
+  <div><button class="fancy-btn">TBD</button></div>
+</section>
 
   <script>
   // Get the button element by its ID
-  var button = document.getElementById('openPetSim');
+  var PetButton = document.getElementById('openPetSim');
+  var DriveButton = document.getElementById('openDrivingSim');
 
   // Add a click event listener to the button
-  button.addEventListener('click', function() {
+  PetButton.addEventListener('click', function() {
     // Redirect to the specified link when the button is clicked
     window.location.href = 'https://noizell.github.io/pet-sim/';
+  });
+  
+  DriveButton.addEventListener('click', function(){
+      window.location.href = 'https://noizell.github.io/driving-sim/';
   });
 </script>
   
@@ -39,6 +48,16 @@
   background-image: -o-linear-gradient(top, #3cb0fd, #34d9b8);
   background-image: linear-gradient(to bottom, #3cb0fd, #34d9b8);
   text-decoration: none;
+}
+
+.layout {
+  width: 1366px;
+  height: 768px;
+
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 } 
 </style>
   
