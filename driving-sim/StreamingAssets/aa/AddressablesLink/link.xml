@@ -1,0 +1,52 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="STVR.DriSim.Runtime.Games.Vehicles.VehicleRunner" preserve="all" />
+  </assembly>
+  <assembly fullname="Dreamteck.Forever, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Dreamteck.Forever.ForeverLevel" preserve="all" />
+    <type fullname="Dreamteck.Forever.LevelGenerator" preserve="all" />
+    <type fullname="Dreamteck.Forever.LevelSegment" preserve="all" />
+    <type fullname="Dreamteck.Forever.RandomPathGenerator" preserve="all" />
+    <type fullname="Dreamteck.Forever.UnityRandomizer" preserve="all" />
+    <type fullname="Dreamteck.Forever.Runner/MotionModule" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.ExtrusionSettings" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.LevelSegment/ObjectProperty" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequence" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequenceCollection" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequenceCollection/SequenceSerialization" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.WheelCollider" preserve="all" />
+  </assembly>
+  <assembly fullname="Dreamteck.Splines">
+    <type fullname="Dreamteck.Splines.SplineSample" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Dreamteck.Utilities">
+    <type fullname="Dreamteck.TS_Bounds" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>
