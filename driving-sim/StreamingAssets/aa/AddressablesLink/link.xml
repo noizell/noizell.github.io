@@ -18,7 +18,6 @@
     <type fullname="UnityEngine.Texture2D" preserve="all" />
     <type fullname="UnityEngine.Shader" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
-    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
@@ -43,20 +42,6 @@
   </assembly>
   <assembly fullname="UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.WheelCollider" preserve="all" />
-  </assembly>
-  <assembly fullname="Cinemachine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="Cinemachine.CinemachineVirtualCamera" preserve="all" />
-    <type fullname="Cinemachine.CinemachinePipeline" preserve="all" />
-    <type fullname="Cinemachine.Cinemachine3rdPersonFollow" preserve="all" />
-    <type fullname="Cinemachine.CinemachineFramingTransposer" preserve="all" />
-    <type fullname="Cinemachine.CinemachineComposer" preserve="all" />
-    <type fullname="Cinemachine.NoiseSettings" preserve="all" />
-    <type fullname="Cinemachine.CinemachineBasicMultiChannelPerlin" preserve="all" />
-    <type fullname="Cinemachine.CinemachineBrain/VcamActivatedEvent" preserve="nothing" serialized="true" />
-    <type fullname="Cinemachine.CinemachineVirtualCameraBase/TransitionParams" preserve="nothing" serialized="true" />
-    <type fullname="Cinemachine.LensSettings" preserve="nothing" serialized="true" />
-    <type fullname="Cinemachine.NoiseSettings/NoiseParams" preserve="nothing" serialized="true" />
-    <type fullname="Cinemachine.NoiseSettings/TransformNoiseParams" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Dreamteck.Utilities">
     <type fullname="Dreamteck.TS_Bounds" preserve="nothing" serialized="true" />
