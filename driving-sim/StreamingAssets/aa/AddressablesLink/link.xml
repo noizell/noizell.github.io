@@ -16,6 +16,7 @@
     <type fullname="UnityEngine.Texture2D" preserve="all" />
     <type fullname="UnityEngine.MeshFilter" preserve="all" />
     <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.Light" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.Shader" preserve="all" />
   </assembly>
@@ -30,10 +31,22 @@
   <assembly fullname="UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.WheelCollider" preserve="all" />
   </assembly>
-  <assembly fullname="Dreamteck.Forever">
+  <assembly fullname="Dreamteck.Forever, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Dreamteck.Forever.UnityRandomizer" preserve="all" />
+    <type fullname="Dreamteck.Forever.ForeverLevel" preserve="all" />
+    <type fullname="Dreamteck.Forever.LevelSegment" preserve="all" />
     <type fullname="Dreamteck.Forever.Runner/MotionModule" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.ExtrusionSettings" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.LevelSegment/ObjectProperty" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequence" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequenceCollection" preserve="nothing" serialized="true" />
+    <type fullname="Dreamteck.Forever.SegmentSequenceCollection/SequenceSerialization" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Dreamteck.Splines">
     <type fullname="Dreamteck.Splines.SplineSample" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Dreamteck.Utilities">
+    <type fullname="Dreamteck.TS_Bounds" preserve="nothing" serialized="true" />
   </assembly>
 </linker>
