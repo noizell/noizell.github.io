@@ -6,6 +6,7 @@
     <title>Unity WebGL Player | Driving Sim</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -54,6 +55,28 @@
         }
         updateBannerVisibility();
       }
+	  
+	function enforceLandscape() {
+		if (window.innerHeight > window.innerWidth) {
+		  document.body.style.transform = 'rotate(90deg)';
+		  document.body.style.transformOrigin = 'left top';
+		  document.body.style.width = window.innerHeight + 'px';
+		  document.body.style.height = window.innerWidth + 'px';
+		  document.body.style.overflow = 'hidden';
+		  document.documentElement.style.height = window.innerWidth + 'px';
+		  document.documentElement.style.overflow = 'hidden';
+		} else {
+		  document.body.style.transform = '';
+		  document.body.style.transformOrigin = '';
+		  document.body.style.width = '';
+		  document.body.style.height = '';
+		  document.body.style.overflow = '';
+		  document.documentElement.style.height = '';
+		  document.documentElement.style.overflow = '';
+    }
+  }
+  window.addEventListener('resize', enforceLandscape);
+  window.addEventListener('load', enforceLandscape);
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/driving-sim.loader.js";
