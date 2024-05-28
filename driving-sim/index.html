@@ -150,8 +150,11 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+      
+      console.log(app.name);
+
       const auth = getAuth(app);
-      const database = getDatabase(app);
+      const database = getDatabase(app); 
     </script>
   </body>
 </html>
