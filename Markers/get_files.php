@@ -1,17 +1,13 @@
 <?php
-// Get the current directory
 $directory = __DIR__;
-
-// Open the directory
 if ($handle = opendir($directory)) {
-    // Loop through the directory contents
+    $files = [];
     while (false !== ($file = readdir($handle))) {
-        // Skip the . and .. special directories
         if ($file != "." && $file != "..") {
-            echo $file . "\n";
+            $files[] = $file;
         }
     }
-    // Close the directory handle
     closedir($handle);
+    echo json_encode($files);
 }
 ?>
