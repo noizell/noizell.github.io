@@ -1295,7 +1295,7 @@ function _emscripten_asm_const_id(code, a0) {
  return ASM_CONSTS[code](a0);
 }
 STATIC_BASE = GLOBAL_BASE;
-STATICTOP = STATIC_BASE + 4359168;
+STATICTOP = STATIC_BASE + 4361232;
 __ATINIT__.push({
  func: (function() {
   __GLOBAL__sub_I_AccessibilityScriptingClasses_cpp();
@@ -3369,7 +3369,7 @@ __ATINIT__.push({
   ___emscripten_environ_constructor();
  })
 });
-var STATIC_BUMP = 4359168;
+var STATIC_BUMP = 4361232;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
@@ -16407,6 +16407,11 @@ function nullFunc_viffffffffffffiiii(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
+function nullFunc_viffffffi(x) {
+ err("Invalid function pointer called with signature 'viffffffi'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
+ err("Build with ASSERTIONS=2 for more info.");
+ abort(x);
+}
 function nullFunc_vifffffi(x) {
  err("Invalid function pointer called with signature 'vifffffi'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
  err("Build with ASSERTIONS=2 for more info.");
@@ -17162,8 +17167,8 @@ function nullFunc_vjji(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-Module["wasmTableSize"] = 123039;
-Module["wasmMaxTableSize"] = 123039;
+Module["wasmTableSize"] = 123043;
+Module["wasmMaxTableSize"] = 123043;
 function invoke_ddddi(index, a1, a2, a3, a4) {
  var sp = stackSave();
  try {
@@ -19964,6 +19969,16 @@ function invoke_viffffffffffffiiii(index, a1, a2, a3, a4, a5, a6, a7, a8, a9, a1
   Module["setThrew"](1, 0);
  }
 }
+function invoke_viffffffi(index, a1, a2, a3, a4, a5, a6, a7, a8) {
+ var sp = stackSave();
+ try {
+  Module["dynCall_viffffffi"](index, a1, a2, a3, a4, a5, a6, a7, a8);
+ } catch (e) {
+  stackRestore(sp);
+  if (typeof e !== "number" && e !== "longjmp") throw e;
+  Module["setThrew"](1, 0);
+ }
+}
 function invoke_vifffffi(index, a1, a2, a3, a4, a5, a6, a7) {
  var sp = stackSave();
  try {
@@ -21762,6 +21777,7 @@ Module.asmLibraryArg = {
  "nullFunc_viffff": nullFunc_viffff,
  "nullFunc_vifffff": nullFunc_vifffff,
  "nullFunc_viffffffffffffiiii": nullFunc_viffffffffffffiiii,
+ "nullFunc_viffffffi": nullFunc_viffffffi,
  "nullFunc_vifffffi": nullFunc_vifffffi,
  "nullFunc_viffffi": nullFunc_viffffi,
  "nullFunc_viffffii": nullFunc_viffffii,
@@ -22193,6 +22209,7 @@ Module.asmLibraryArg = {
  "invoke_viffff": invoke_viffff,
  "invoke_vifffff": invoke_vifffff,
  "invoke_viffffffffffffiiii": invoke_viffffffffffffiiii,
+ "invoke_viffffffi": invoke_viffffffi,
  "invoke_vifffffi": invoke_vifffffi,
  "invoke_viffffi": invoke_viffffi,
  "invoke_viffffii": invoke_viffffii,
@@ -30434,6 +30451,11 @@ var dynCall_viffffffffffffiiii = Module["dynCall_viffffffffffffiiii"] = (functio
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
  assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
  return Module["asm"]["dynCall_viffffffffffffiiii"].apply(null, arguments);
+});
+var dynCall_viffffffi = Module["dynCall_viffffffi"] = (function() {
+ assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
+ assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
+ return Module["asm"]["dynCall_viffffffi"].apply(null, arguments);
 });
 var dynCall_vifffffi = Module["dynCall_vifffffi"] = (function() {
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
