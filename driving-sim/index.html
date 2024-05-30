@@ -7,8 +7,8 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<!--<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>-->
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -26,6 +26,24 @@
         <div id="unity-build-title">Driving Sim</div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script>
+       var firebaseConfig = {
+            apiKey: "AIzaSyDVAJuaR002HKJARnU0CVKix0K4VL5aKBU",
+            authDomain: "drive-sim-f77b1.firebaseapp.com",
+            databaseURL: "https://drive-sim-f77b1-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "drive-sim-f77b1",
+            storageBucket: "drive-sim-f77b1.appspot.com",
+            messagingSenderId: "445012339241",
+            appId: "1:445012339241:web:614933de0cb92e56ca4a38"
+          };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -58,27 +76,28 @@
         updateBannerVisibility();
       }
 	  
-	function enforceLandscape() {
-		if (window.innerHeight > window.innerWidth) {
-		  document.body.style.transform = 'rotate(90deg)';
-		  document.body.style.transformOrigin = 'left top';
-		  document.body.style.width = window.innerHeight + 'px';
-		  document.body.style.height = window.innerWidth + 'px';
-		  document.body.style.overflow = 'hidden';
-		  document.documentElement.style.height = window.innerWidth + 'px';
-		  document.documentElement.style.overflow = 'hidden';
-		} else {
-		  document.body.style.transform = '';
-		  document.body.style.transformOrigin = '';
-		  document.body.style.width = '';
-		  document.body.style.height = '';
-		  document.body.style.overflow = '';
-		  document.documentElement.style.height = '';
-		  document.documentElement.style.overflow = '';
-    }
-  }
-  window.addEventListener('resize', enforceLandscape);
-  window.addEventListener('load', enforceLandscape);
+	    function enforceLandscape() {
+		    if (window.innerHeight > window.innerWidth) {
+		      document.body.style.transform = 'rotate(90deg)';
+		      document.body.style.transformOrigin = 'left top';
+		      document.body.style.width = window.innerHeight + 'px';
+		      document.body.style.height = window.innerWidth + 'px';
+		      document.body.style.overflow = 'hidden';
+		      document.documentElement.style.height = window.innerWidth + 'px';
+		      document.documentElement.style.overflow = 'hidden';
+		    } else {
+		      document.body.style.transform = '';
+		      document.body.style.transformOrigin = '';
+		      document.body.style.width = '';
+		      document.body.style.height = '';
+		      document.body.style.overflow = '';
+		      document.documentElement.style.height = '';
+		      document.documentElement.style.overflow = '';
+            }
+        }
+
+      window.addEventListener('resize', enforceLandscape);
+      window.addEventListener('load', enforceLandscape);
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/driving-sim.loader.js";
@@ -128,14 +147,15 @@
         });
       };
       document.body.appendChild(script);
+
     </script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    <!--<script type="module">
+      /*// Import the functions you need from the SDKs you need
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries 
-      import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+      // import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+      // import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
       // Your web app's Firebase configuration
       const firebaseConfig = {
@@ -154,7 +174,7 @@
       console.log(app.name);
 
       const auth = getAuth(app);
-      const database = getDatabase(app); 
-    </script>
+      const database = getDatabase(app); */
+    </script>-->
   </body>
 </html>
