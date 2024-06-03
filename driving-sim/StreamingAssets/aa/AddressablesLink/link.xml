@@ -24,10 +24,12 @@
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
     <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="STVR.DriSim.Runtime.Games.Vehicles.VehicleRunner" preserve="all" />
     <type fullname="STVR.DriSim.Runtime.Games.Vehicles.Vehicle" preserve="all" />
+    <type fullname="STVR.DriSim.Runtime.Games.Levels.LevelSO" preserve="all" />
     <type fullname="STVR.DriSim.Runtime.Games.Obstacles.ObstacleRunner" preserve="all" />
     <type fullname="STVR.DriSim.Runtime.Games.Obstacles.Obstacle" preserve="all" />
   </assembly>
@@ -35,8 +37,8 @@
     <type fullname="UnityEngine.WheelCollider" preserve="all" />
   </assembly>
   <assembly fullname="Dreamteck.Forever, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="Dreamteck.Forever.UnityRandomizer" preserve="all" />
     <type fullname="Dreamteck.Forever.ForeverLevel" preserve="all" />
+    <type fullname="Dreamteck.Forever.UnityRandomizer" preserve="all" />
     <type fullname="Dreamteck.Forever.LevelSegment" preserve="all" />
     <type fullname="Dreamteck.Forever.Runner/MotionModule" preserve="nothing" serialized="true" />
     <type fullname="Dreamteck.Forever.ExtrusionSettings" preserve="nothing" serialized="true" />
