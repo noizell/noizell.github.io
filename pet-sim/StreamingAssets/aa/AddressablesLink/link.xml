@@ -22,6 +22,7 @@
     <type fullname="UnityEngine.Avatar" preserve="all" />
     <type fullname="UnityEngine.Animator" preserve="all" />
     <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="STVR.PetSim.Runtime.Games.Actors.Actor" preserve="all" />
