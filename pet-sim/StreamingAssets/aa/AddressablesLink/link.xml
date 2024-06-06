@@ -26,5 +26,6 @@
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="STVR.PetSim.Runtime.Games.Actors.Actor" preserve="all" />
+    <type fullname="STVR.PetSim.Runtime.Games.Contentments.ContentmentSO" preserve="all" />
   </assembly>
 </linker>
