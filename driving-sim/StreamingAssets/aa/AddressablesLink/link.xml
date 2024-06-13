@@ -54,6 +54,10 @@
     <type fullname="Dreamteck.Forever.SegmentSequenceCollection" preserve="nothing" serialized="true" />
     <type fullname="Dreamteck.Forever.SegmentSequenceCollection/SequenceSerialization" preserve="nothing" serialized="true" />
   </assembly>
+  <assembly fullname="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.ParticleSystem" preserve="all" />
+    <type fullname="UnityEngine.ParticleSystemRenderer" preserve="all" />
+  </assembly>
   <assembly fullname="Dreamteck.Splines">
     <type fullname="Dreamteck.Splines.SplineSample" preserve="nothing" serialized="true" />
   </assembly>
