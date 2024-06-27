@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Driving Sim</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-	<!--<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>-->
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <!--<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>-->
+</head>
+<body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1366 height=768></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+        <canvas id="unity-canvas" width=1366 height=768></canvas>
+        <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+            </div>
         </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Driving Sim</div>
-      </div>
+        <div id="unity-warning"></div>
+        <div id="unity-footer">
+            <div id="unity-webgl-logo"></div>
+            <div id="unity-fullscreen-button"></div>
+            <div id="unity-build-title">Driving Sim</div>
+        </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
     <script>
-       var firebaseConfig = {
+        var firebaseConfig = {
             apiKey: "AIzaSyDVAJuaR002HKJARnU0CVKix0K4VL5aKBU",
             authDomain: "drive-sim-f77b1.firebaseapp.com",
             databaseURL: "https://drive-sim-f77b1-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -38,144 +38,118 @@
             storageBucket: "drive-sim-f77b1.appspot.com",
             messagingSenderId: "445012339241",
             appId: "1:445012339241:web:614933de0cb92e56ca4a38"
-          };
-    
+        };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
 
     <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+        var container = document.querySelector("#unity-container");
+        var canvas = document.querySelector("#unity-canvas");
+        var loadingBar = document.querySelector("#unity-loading-bar");
+        var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+        var warningBanner = document.querySelector("#unity-warning");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
+        // Shows a temporary message banner/ribbon for a few seconds, or
+        // a permanent error message on top of the canvas if type=='error'.
+        // If type=='warning', a yellow highlight color is used.
+        // Modify or remove this function to customize the visually presented
+        // way that non-critical warnings and error messages are presented to the
+        // user.
+        function unityShowBanner(msg, type) {
+            function updateBannerVisibility() {
+                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+            }
+            var div = document.createElement('div');
+            div.innerHTML = msg;
+            warningBanner.appendChild(div);
+            if (type == 'error') div.style = 'background: red; padding: 10px;';
+            else {
+                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                setTimeout(function() {
+                    warningBanner.removeChild(div);
+                    updateBannerVisibility();
+                }, 5000);
+            }
             updateBannerVisibility();
-          }, 5000);
         }
-        updateBannerVisibility();
-      }
-	  
-	    function enforceLandscape() {
-		    if (window.innerHeight > window.innerWidth) {
-		      document.body.style.transform = 'rotate(90deg)';
-		      document.body.style.transformOrigin = 'left top';
-		      document.body.style.width = window.innerHeight + 'px';
-		      document.body.style.height = window.innerWidth + 'px';
-		      document.body.style.overflow = 'hidden';
-		      document.documentElement.style.height = window.innerWidth + 'px';
-		      document.documentElement.style.overflow = 'hidden';
-		    } else {
-		      document.body.style.transform = '';
-		      document.body.style.transformOrigin = '';
-		      document.body.style.width = '';
-		      document.body.style.height = '';
-		      document.body.style.overflow = '';
-		      document.documentElement.style.height = '';
-		      document.documentElement.style.overflow = '';
+
+        // Enforce landscape orientation on mobile devices
+        function enforceLandscape() {
+            if (window.innerHeight > window.innerWidth) {
+                document.body.style.transform = 'rotate(90deg)';
+                document.body.style.transformOrigin = 'left top';
+                document.body.style.width = window.innerHeight + 'px';
+                document.body.style.height = window.innerWidth + 'px';
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.height = window.innerWidth + 'px';
+                document.documentElement.style.overflow = 'hidden';
+            } else {
+                document.body.style.transform = '';
+                document.body.style.transformOrigin = '';
+                document.body.style.width = '';
+                document.body.style.height = '';
+                document.body.style.overflow = '';
+                document.documentElement.style.height = '';
+                document.documentElement.style.overflow = '';
             }
         }
 
-      window.addEventListener('resize', enforceLandscape);
-      window.addEventListener('load', enforceLandscape);
+        window.addEventListener('resize', enforceLandscape);
+        window.addEventListener('load', enforceLandscape);
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/driving-sim.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/driving-sim.data",
-        frameworkUrl: buildUrl + "/driving-sim.framework.js",
-        codeUrl: buildUrl + "/driving-sim.wasm",
-        symbolsUrl: buildUrl + "/driving-sim.symbols.json",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Satriver Studio",
-        productName: "Driving Sim",
-        productVersion: "0.0.1",
-        showBanner: unityShowBanner,
-      };
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/driving-sim.loader.js";
+        var config = {
+            dataUrl: buildUrl + "/driving-sim.data",
+            frameworkUrl: buildUrl + "/driving-sim.framework.js",
+            codeUrl: buildUrl + "/driving-sim.wasm",
+            symbolsUrl: buildUrl + "/driving-sim.symbols.json",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "Satriver Studio",
+            productName: "Driving Sim",
+            productVersion: "0.0.1",
+            showBanner: unityShowBanner,
+        };
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+        // By default Unity keeps WebGL canvas render target size matched with
+        // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+        // Set this to false if you want to decouple this synchronization from
+        // happening inside the engine, and you would instead like to size up
+        // the canvas DOM size and WebGL render target sizes yourself.
+        // config.matchWebGLToCanvasSize = false;
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        canvas.style.width = "1366px";
-        canvas.style.height = "768px";
-      }
-      loadingBar.style.display = "block";
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            container.className = "unity-mobile";
+            // Avoid draining fillrate performance on mobile devices,
+            // and default/override low DPI mode on mobile browsers.
+            config.devicePixelRatio = 1;
+            unityShowBanner('WebGL builds are not supported on mobile devices.');
+        } else {
+            canvas.style.width = "1366px";
+            canvas.style.height = "768px";
+        }
+        loadingBar.style.display = "block";
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-		  window.unityInstance = unityInstance;
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                window.unityInstance = unityInstance;
+                fullscreenButton.onclick = () => {
+                    unityInstance.SetFullscreen(1);
+                };
+            }).catch((message) => {
+                alert(message);
+            });
+        };
+        document.body.appendChild(script);
 
     </script>
-    <!--<script type="module">
-      /*// Import the functions you need from the SDKs you need
-      // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries 
-      // import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-      // import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDVAJuaR002HKJARnU0CVKix0K4VL5aKBU",
-        authDomain: "drive-sim-f77b1.firebaseapp.com",
-        databaseURL: "https://drive-sim-f77b1-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "drive-sim-f77b1",
-        storageBucket: "drive-sim-f77b1.appspot.com",
-        messagingSenderId: "445012339241",
-        appId: "1:445012339241:web:614933de0cb92e56ca4a38"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      
-      console.log(app.name);
-
-      const auth = getAuth(app);
-      const database = getDatabase(app); */
-    </script>-->
-  </body>
+</body>
 </html>
