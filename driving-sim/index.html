@@ -131,7 +131,9 @@
                 loadingBar.style.display = "none";
                 window.unityInstance = unityInstance;
                 // Switch to full screen on start
-                unityInstance.SetFullscreen(1);
+                setTimeout(() => {
+                    unityInstance.SetFullscreen(1);
+                }, 1000);
                 fullscreenButton.onclick = () => {
                     unityInstance.SetFullscreen(1);
                 };
