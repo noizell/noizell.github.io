@@ -7,8 +7,6 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-    <!--<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>-->
 </head>
 <body>
     <div id="unity-container" class="unity-desktop">
@@ -25,6 +23,9 @@
             <div id="unity-fullscreen-button"></div>
             <div id="unity-build-title">Driving Sim</div>
         </div>
+    </div>
+    <div id="landscape-warning" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); font-size:24px; color:red; background-color:white; padding:10px; border:2px solid red;">
+        Rotate to Landscape
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
@@ -51,6 +52,7 @@
         var progressBarFull = document.querySelector("#unity-progress-bar-full");
         var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
+        var landscapeWarning = document.querySelector("#landscape-warning");
 
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
@@ -79,21 +81,9 @@
         // Enforce landscape orientation on mobile devices
         function enforceLandscape() {
             if (window.innerHeight > window.innerWidth) {
-                document.body.style.transform = 'rotate(90deg)';
-                document.body.style.transformOrigin = 'left top';
-                document.body.style.width = window.innerHeight + 'px';
-                document.body.style.height = window.innerWidth + 'px';
-                document.body.style.overflow = 'hidden';
-                document.documentElement.style.height = window.innerWidth + 'px';
-                document.documentElement.style.overflow = 'hidden';
+                landscapeWarning.style.display = 'block';
             } else {
-                document.body.style.transform = '';
-                document.body.style.transformOrigin = '';
-                document.body.style.width = '';
-                document.body.style.height = '';
-                document.body.style.overflow = '';
-                document.documentElement.style.height = '';
-                document.documentElement.style.overflow = '';
+                landscapeWarning.style.display = 'none';
             }
         }
 
@@ -108,9 +98,9 @@
             codeUrl: buildUrl + "/driving-sim.wasm",
             symbolsUrl: buildUrl + "/driving-sim.symbols.json",
             streamingAssetsUrl: "StreamingAssets",
-            companyName: "Satriver Studio",
-            productName: "Driving Sim",
-            productVersion: "0.0.1",
+            companyName: "Satriver Studio"},
+            productName: "Driving Sim"},
+            productVersion: "0.0.1"},
             showBanner: unityShowBanner,
         };
 
@@ -126,7 +116,6 @@
             // Avoid draining fillrate performance on mobile devices,
             // and default/override low DPI mode on mobile browsers.
             config.devicePixelRatio = 1;
-            unityShowBanner('WebGL builds are not supported on mobile devices.');
         } else {
             canvas.style.width = "1366px";
             canvas.style.height = "768px";
@@ -141,7 +130,8 @@
             }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 window.unityInstance = unityInstance;
-				unityInstance.SetFullscreen(1);
+                // Switch to full screen on start
+                unityInstance.SetFullscreen(1);
                 fullscreenButton.onclick = () => {
                     unityInstance.SetFullscreen(1);
                 };
