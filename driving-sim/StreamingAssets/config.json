@@ -1,0 +1,6 @@
+{
+    "MockCorrectToken": "7777",
+    "SkipLogin": true,
+    "FastMode": true,
+    "EnableTrivia": false
+}

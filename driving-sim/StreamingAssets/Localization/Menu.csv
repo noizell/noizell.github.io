@@ -1,0 +1,26 @@
+Key,English,Bahasa,Chinese
+leaderboard,Leaderboard,Papan Peringkat,???
+leaderboard_rank,Rank,No., ??
+leaderboard_name,Name,Nama,??
+leaderboard_score,Score,Skor, ??
+main_start_game,"Start
+Game","Mulai
+Permainan", ????
+main_play_game,Play,Main, ?
+main_select,Select,Pilih, ??
+vehicle_selection_bike,Bike,Sepeda Motor,???
+vehicle_selection_car,Car,Mobil,??
+vehicle_selection_truck,Truck,Truk,??
+vehicle_selection_vehicle,Vehicle,Kendaraan,??
+vehicle_selection_header,Select Vehicle,Pilih Kendaraan,????
+vehicle_selection_select_vehicle,Vehicle: {0},Kendaraan: {0}, ??: {0}
+level_selection_header,Select Level,Pilih Level, ????
+level_selection_select_level,Region: {0},Wilayah: {0}, ??: {0}
+adjust_speed,Choose Speed,Pilih Kecepatan, ????
+adjust_speed_note,"NB : Minimum Speed is 40, Maximum 150","NB: Kecepatan Minimal 40, Kecepatan Maximal 150", ??: ?????40??????150
+setting,Settings
+setting_audio,Audio
+setting_audio_master,Master Volume
+setting_audio_bgm,BGM Volume
+setting_audio_sfx,SFX Volume
+setting_audio_ui_sfx,UI SFX Volume

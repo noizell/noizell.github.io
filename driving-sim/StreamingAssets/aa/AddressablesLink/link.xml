@@ -28,10 +28,10 @@
     <type fullname="UnityEngine.BoxCollider" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="UnityEngine.Avatar" preserve="all" />
-    <type fullname="UnityEngine.Animator" preserve="all" />
     <type fullname="UnityEngine.AnimationClip" preserve="all" />
+    <type fullname="UnityEngine.Avatar" preserve="all" />
     <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+    <type fullname="UnityEngine.Animator" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="STVR.DriSim.Runtime.Games.Vehicles.VehicleRunner" preserve="all" />

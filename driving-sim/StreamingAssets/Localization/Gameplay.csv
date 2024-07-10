@@ -1,0 +1,18 @@
+Key,English,Bahasa,Chinese
+simulation_completed,Simulation Complete,Simulasi telah Selesai,????
+simulation_result_tldr_too_early,You Hit Brakes Too Early!,Kamu Ngerem Terlalu Awal!,???????
+simulation_result_tldr_avoided,You Stopped In Time!,Kamu Berhenti Tepat Waktu!,???????
+simulation_result_tldr_collide_forced_brake,You Did'nt Hit the Brake!,Kamu Tidak Menginjak Rem!,???????
+simulation_result_tldr_collide,You Did'nt Stop in Time!,Kamu Tidak Berhenti Tepat Waktu!,????????
+simulation_result_desc_too_early,Make sure you wait until obstacle appear before braking.,Pastikan Anda menunggu sampai rintangan muncul sebelum melakukan pengereman., ??????????????
+simulation_result_desc_avoided_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!, ????????
+simulation_result_desc_avoided_obstacle_rendered,"In {0} seconds it took you to react, you traveled a distance of {1} meters before braking.","Kamu memiliki reaksi selama {0} detik, berkendara sejauh {1} meter sebelum mengerem.",????? {0} ??????????? {1} ??
+simulation_result_desc_collide_forced_brake,Make sure you brake when you see the obstacle by right clicking on the screen.,"Pastikan kamu mengerem setelah melihat rintangannya muncul, dengan klik kanan ke layar", ??????????????????????
+simulation_result_desc_collide_obstacle_rendered,It took you {0} seconds to react and you were still travelling at {1}Km/h when you hit the obstacle.,Kamu memiliki reaksi selama {0} detik dan masih berjalan dengan kecepatan {1}Km/h ketika menabrak rintangan,??? {0} ???????????????? {1} ??/???
+simulation_result_desc_collide_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!, ????????
+gameplay_main_menu,Main Menu,Menu Utama, ???
+gameplay_try_again,Try Again,Coba Lagi,????
+gameplay_adjust_speed,Adjust Speed,Atur Kecepatan, ????
+gameplay_how_to_play,How To Play,Cara Bermain,???
+gameplay_how_to_play_desc,"An obstacle will randomly appear.
+Right click on screen to hit brakes, and see if you stop in time.","Sebuah rintangan akan muncul secara acak. Klik kanan pada layar untuk menginjak rem, dan lihat apakah Anda berhenti tepat waktu.",?????????????????????????????
