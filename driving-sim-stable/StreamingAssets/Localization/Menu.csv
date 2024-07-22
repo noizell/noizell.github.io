@@ -1,0 +1,29 @@
+Key,English,Bahasa,Chinese,Bengali,Tamil
+leaderboard,Leaderboard,Papan Peringkat,排行榜,লিডারবোর্ড,முன்னணி பலகை
+leaderboard_rank,Rank,Peringkat,排名,র‍্যাঙ্ক,தரம்
+leaderboard_name,Name,Nama,名字,নাম,பெயர்
+leaderboard_score,Score,Skor,得分,স্কোর,மதிப்பெண்
+main_start_game,"Start
+Game","Mulai
+Permainan","开始
+游戏","শুরু
+গেম","தொடங்கு
+விளையாட்டு"
+main_play_game,Play,Main,开始,খেলা,விளையாடு
+main_select,Select,Pilih,选择,নির্বাচন,தேர்வு செய்
+vehicle_selection_bike,Bike,Sepeda Motor,自行车,বাইক,மோட்டார் சைக்கிள்
+vehicle_selection_car,Car,Mobil,汽车,গাড়ি,கார்
+vehicle_selection_truck,Truck,Truk,卡车,ট্রাক,லாரி
+vehicle_selection_vehicle,Vehicle,Kendaraan,交通工具,যানবাহন,வாகனம்
+vehicle_selection_header,Select Vehicle,Pilih Kendaraan,选择交通工具,যানবাহন নির্বাচন করুন,வாகனம் தேர்வு செய்
+vehicle_selection_select_vehicle,Vehicle: {0},Kendaraan: {0},交通工具: {0},যানবাহন: {0},வாகனம்: {0}
+level_selection_header,Select Level,Pilih Level,选择级别,স্তর নির্বাচন করুন,நிலையைத் தேர்ந்தெடு
+level_selection_select_level,Region: {0},Wilayah: {0},区域: {0},অঞ্চল: {0},பகுதி: {0}
+adjust_speed,Choose Speed,Pilih Kecepatan,选择时速,গতি নির্বাচন করুন,வேகத்தைத் தேர்வு செய்
+adjust_speed_note,"Note : Minimum Speed is 40, Maximum 150","Catatan: Kecepatan Minimum adalah 40, Maksimum 150","注意: 最低时速为40, 最高时速为150","দ্রষ্টব্য: সর্বনিম্ন গতি ৪০, সর্বাধিক ১৫০","குறிப்பு: குறைந்தபட்ச வேகம் 40, அதிகபட்சம் 150"
+setting,Settings,Pengaturan,设置,সেটিংস,அமைப்புகள்
+setting_audio,Audio,Audio,音频,অডিও,ஒலி
+setting_audio_master,Master Volume,Volume Utama,主音量,মাস্টার ভলিউম,மாஸ்டர் ஒலி
+setting_audio_bgm,BGM Volume,Volume Musik Latar,背景音乐音量,ব্যাকগ্রাউন্ড মিউজিক ভলিউম,பின்னணி இசை ஒலி
+setting_audio_sfx,SFX Volume,Volume Efek Suara,音效音量,বিশেষ প্রভাব ভলিউম,சிறப்பு ஒலி
+setting_audio_ui_sfx,UI SFX Volume,Volume Efek Suara Antarmuka Pengguna,用户界面音效音量,ইউআই বিশেষ প্রভাব ভলিউম,பயனர் இடைமுக சிறப்பு ஒலி
