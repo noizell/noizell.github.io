@@ -192,9 +192,9 @@
             <div id="unity-build-title">Driving Sim</div>
         </div>
     </div>
-    <div id="landscape-warning" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); font-size:24px; color:red; background-color:white; padding:10px; border:2px solid red;">
+<!--     <div id="landscape-warning" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); font-size:24px; color:red; background-color:white; padding:10px; border:2px solid red;">
         Portrait Detected
-    </div>
+    </div> -->
     <div id="orientation-overlay">
         <p>Please rotate your device to landscape mode.</p>
     </div>
@@ -229,7 +229,22 @@
             }
         }
     </script>
+    <script>
+        function notifyResolutionChange() {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+			var aspectRatio = width / height;
+			var stringArray = [width, height, aspectRatio];
+			var jsonString = JSON.stringify(stringArray);
+            //unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
+			if (window.unityInstance) {
+                unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
+            }
+		}
 
+        window.addEventListener('resize', notifyResolutionChange);
+        window.addEventListener('load', notifyResolutionChange);
+    </script>
     <script>
         var container = document.querySelector("#unity-container");
         var canvas = document.querySelector("#unity-canvas");
@@ -277,14 +292,15 @@
 
         window.addEventListener('resize', enforceLandscape);
         window.addEventListener('load', enforceLandscape);
-
+		
+        var mode = "-stable";
         var buildUrl = "Build";
-        var loaderUrl = buildUrl + "/driving-sim.loader.js";
+		var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
         var config = {
-            dataUrl: buildUrl + "/driving-sim.data",
-            frameworkUrl: buildUrl + "/driving-sim.framework.js",
-            codeUrl: buildUrl + "/driving-sim.wasm",
-            symbolsUrl: buildUrl + "/driving-sim.symbols.json",
+            dataUrl: `${buildUrl}/driving-sim${mode}.data`,
+            frameworkUrl: `${buildUrl}/driving-sim${mode}.framework.js`,
+            codeUrl: `${buildUrl}/driving-sim${mode}.wasm`,
+            symbolsUrl: `${buildUrl}/driving-sim${mode}.symbols.json`,
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Satriver Studio",
             productName: "Driving Sim",

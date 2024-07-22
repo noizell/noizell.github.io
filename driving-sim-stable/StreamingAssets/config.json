@@ -1,6 +1,6 @@
 {
     "MockCorrectToken": "F4412",
-    "SkipLogin": false,
+    "SkipLogin": true,
     "FastMode": true,
     "EnableTrivia": false
 }
