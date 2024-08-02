@@ -232,8 +232,14 @@
             var width = window.innerWidth;
             var height = window.innerHeight;
 			var aspectRatio = width / height;
-			var stringArray = [width, height, aspectRatio];
-			var jsonString = JSON.stringify(stringArray);
+
+			var data = {
+                Width: width,
+                Height: height,
+                AspectRatio: aspectRatio
+            };
+            
+			var jsonString = JSON.stringify(data);
             //unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
 			if (window.unityInstance) {
                 unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
