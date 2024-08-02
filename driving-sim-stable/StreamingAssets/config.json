@@ -3,6 +3,6 @@
     "SkipLogin": true,
     "FastMode": true,
     "EnableTrivia": false,
-    "Language": "bn",
+    "Language": "en",
     "SegmentsToCompleteLoading": 6
 }
