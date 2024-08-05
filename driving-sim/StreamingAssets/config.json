@@ -1,6 +1,8 @@
 {
-    "MockCorrectToken": "F4412",
-    "SkipLogin": true,
+    "MockCorrectToken": "skip",
+    "SkipLogin": false,
     "FastMode": true,
-    "EnableTrivia": false
+    "EnableTrivia": false,
+    "Language": "en",
+    "SegmentsToCompleteLoading": 6
 }

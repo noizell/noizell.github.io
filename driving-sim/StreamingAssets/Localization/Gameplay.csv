@@ -1,18 +1,23 @@
-Key,English,Bahasa,Chinese
-simulation_completed,Simulation Complete,Simulasi telah Selesai,????
-simulation_result_tldr_too_early,You Hit Brakes Too Early!,Kamu Ngerem Terlalu Awal!,???????
-simulation_result_tldr_avoided,You Stopped In Time!,Kamu Berhenti Tepat Waktu!,???????
-simulation_result_tldr_collide_forced_brake,You Did'nt Hit the Brake!,Kamu Tidak Menginjak Rem!,???????
-simulation_result_tldr_collide,You Did'nt Stop in Time!,Kamu Tidak Berhenti Tepat Waktu!,????????
-simulation_result_desc_too_early,Make sure you wait until obstacle appear before braking.,Pastikan Anda menunggu sampai rintangan muncul sebelum melakukan pengereman., ??????????????
-simulation_result_desc_avoided_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!, ????????
-simulation_result_desc_avoided_obstacle_rendered,"In {0} seconds it took you to react, you traveled a distance of {1} meters before braking.","Kamu memiliki reaksi selama {0} detik, berkendara sejauh {1} meter sebelum mengerem.",????? {0} ??????????? {1} ??
-simulation_result_desc_collide_forced_brake,Make sure you brake when you see the obstacle by right clicking on the screen.,"Pastikan kamu mengerem setelah melihat rintangannya muncul, dengan klik kanan ke layar", ??????????????????????
-simulation_result_desc_collide_obstacle_rendered,It took you {0} seconds to react and you were still travelling at {1}Km/h when you hit the obstacle.,Kamu memiliki reaksi selama {0} detik dan masih berjalan dengan kecepatan {1}Km/h ketika menabrak rintangan,??? {0} ???????????????? {1} ??/???
-simulation_result_desc_collide_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!, ????????
-gameplay_main_menu,Main Menu,Menu Utama, ???
-gameplay_try_again,Try Again,Coba Lagi,????
-gameplay_adjust_speed,Adjust Speed,Atur Kecepatan, ????
-gameplay_how_to_play,How To Play,Cara Bermain,???
-gameplay_how_to_play_desc,"An obstacle will randomly appear.
-Right click on screen to hit brakes, and see if you stop in time.","Sebuah rintangan akan muncul secara acak. Klik kanan pada layar untuk menginjak rem, dan lihat apakah Anda berhenti tepat waktu.",?????????????????????????????
+Key,English,Bahasa,Chinese,Bengali,Tamil
+simulation_completed,Simulation Complete,Simulasi telah Selesai,模拟完成,সিমুলেশন সম্পন্ন,சிமுலேஷன் முடிந்தது
+simulation_result_tldr_too_early,You Hit Brakes Too Early!,Kamu Ngerem Terlalu Awal!,您刹车太早了！,আপনি খুব তাড়াতাড়ি ব্রেক করেছেন!,நீங்கள் மிக விரைவாக பிரேக் அடித்துவிட்டீர்கள்!
+simulation_result_tldr_avoided,You Stopped In Time!,Kamu Berhenti Tepat Waktu!,您及时停下了！,আপনি সময়মত থেমেছেন!,நீங்கள் நேரத்தில் நிறுத்திவிட்டீர்கள்!
+simulation_result_tldr_collide_forced_brake,You Didn't Hit the Brake!,Kamu Tidak Menginjak Rem!,您没有刹车！,আপনি ব্রেক করেননি!,நீங்கள் பிரேக்கை அடிக்கவில்லை!
+simulation_result_tldr_collide,You Didn't Stop in Time!,Kamu Tidak Berhenti Tepat Waktu!,您没有及时停下！,আপনি সময়মত থামেননি!,நீங்கள் நேரத்தில் நிறுத்தவில்லை!
+simulation_result_desc_too_early,Make sure you wait until obstacle appear before braking.,Pastikan Anda menunggu sampai rintangan muncul sebelum melakukan pengereman.,请确保在障碍物出现后再刹车。,নিশ্চিত করুন যে আপনি ব্রেক করার আগে প্রতিবন্ধকতা উপস্থিত হওয়া পর্যন্ত অপেক্ষা করেন।,பிரேக் அடிக்குமுன் தடைகளை வரும் வரை காத்திருப்பதை உறுதிசெய்யவும்.
+simulation_result_desc_avoided_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!,障碍物尚未出现。,প্রতিবন্ধকতা এখনও উপস্থিত হয়নি।,தடை இன்னும் தோன்றவில்லை.
+simulation_result_desc_avoided_obstacle_rendered,"In {0} seconds it took you to react, you traveled a distance of {1} meters before braking.","Kamu memiliki reaksi selama {0} detik, berkendara sejauh {1} meter sebelum mengerem.",您反应用了{0}秒，在刹车前行驶了{1}米。,"আপনাকে প্রতিক্রিয়া জানাতে {0} সেকেন্ড সময় লেগেছে, আপনি ব্রেক করার আগে {1} মিটার দূরত্ব অতিক্রম করেছেন।","நீங்கள் செயல்பட {0} விநாடிகள் எடுத்தது, பிரேக் அடிப்பதற்கு முன் {1} மீட்டர் தொலைவு சென்றுவிட்டீர்கள்."
+simulation_result_desc_collide_forced_brake,Make sure you brake when you see the obstacle by right clicking on the screen.,"Pastikan kamu mengerem setelah melihat rintangannya muncul, dengan klik kanan ke layar",确保在看到障碍物时右键单击屏幕刹车。,স্ক্রিনে ডান ক্লিক করে প্রতিবন্ধকতা দেখলে ব্রেক করুন।,திரையில் வலது கிளிக் செய்து தடையைப் பார்க்கும்போது பிரேக் அடிக்கவும்உறுதிசெய்யவும்.
+simulation_result_desc_collide_obstacle_rendered,It took you {0} seconds to react and you were still travelling at {1}Km/h when you hit the obstacle.,Kamu memiliki reaksi selama {0} detik dan masih berjalan dengan kecepatan {1}Km/h ketika menabrak rintangan,您用了{0}秒做出反应，撞到障碍物时的速度仍然还有{1}公里/小时。,আপনাকে প্রতিক্রিয়া জানাতে {0} সেকেন্ড সময় লেগেছে এবং যখন আপনি প্রতিবন্ধকতায় আঘাত করেছেন তখনও আপনার গতি ছিল {1} কিমি/ঘণ্টা।,செயல்பட {0} விநாடிகள் எடுத்தது மற்றும் நீங்கள் தடையை மோதும் போது நீங்கள் {1} கிமீ/மணி வேகத்தில் பயணித்துக்கொண்டிருந்தீர்கள்.
+simulation_result_desc_collide_obstacle_not_rendered,The obstacle has not yet spawned.,Rintangannya masih belum muncul!,障碍物尚未出现。,প্রতিবন্ধকতা এখনও উপস্থিত হয়নি।,தடை இன்னும் தோன்றவில்லை.
+gameplay_main_menu,Main Menu,Menu Utama,主菜单,প্রধান মেনু,முக்கிய மெனு
+gameplay_try_again,Try Again,Coba Lagi,再试一次,আবার চেষ্টা করুন,மீண்டும் முயற்சிக்கவும்
+gameplay_adjust_speed,Adjust Speed,Atur Kecepatan,调整时速,গতি সমন্বয় করুন,வேகத்தை சரிசெய்யவும்
+gameplay_how_to_play,How To Play,Cara Bermain,玩法,কীভাবে খেলবেন,விளையாட எப்படி
+gameplay_how_to_play_desc,"An obstacle will randomly appear. Left click on screen to hit brakes, and see if you stop in time.","Sebuah rintangan akan muncul secara acak. Klik kiri pada layar untuk menginjak rem, dan lihat apakah Anda berhenti tepat waktu.","障碍物将随机出现。 左键单击屏幕刹车，看看您是否能及时停下。","একটি প্রতিবন্ধকতা এলোমেলোভাবে উপস্থিত হবে। ব্রেক করার জন্য স্ক্রিনে বাম ক্লিক করুন এবং দেখুন আপনি সময়মত থামতে পারেন কিনা।","ஒரு தடையை சீரற்ற முறையில் தோன்றும். பிரேக் அடிக்க திரையில் இடது கிளிக் செய்யவும், நீங்கள் நேரத்தில் நிறுத்துகிறீர்களா என்பதைப் பாருங்கள்."
+reaction_reaction_caption,Reaction,Reaksi,反应,প্রতিক্রিয়া,வினை
+reaction_braking_caption,Braking,Mengerem,制动,ব্রেকিং,நிறுத்துதல்
+reaction_braking_distance_caption,Braking Distance,Jarak Mengerem,制动距离,ব্রেকিং দূরত্ব,நிறுத்தும் தூரம்
+btn_apply_gameplay,APPLY,TERAPKAN,应用,பொருந்து,প্রয়োগ
+text_simulation_complete,SIMULATION COMPLETE,SIMULASI SELESAI,模拟完成,সিমুলেশন সম্পন্ন,செயலாக்கம் முடிந்தது
+text_try_again,TRY AGAIN,COBA LAGI,再试一次,আবার চেষ্টা করুন,மீண்டும் முயற்சிக்கவும்
