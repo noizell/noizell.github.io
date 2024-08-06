@@ -210,8 +210,37 @@
     <title>Unity WebGL Player | Driving Sim</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+        #unity-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #unity-canvas {
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+        }
+        .landscape #unity-canvas {
+            transform: rotate(90deg) translate(0, -100%);
+            width: 100vh;
+            height: 100vw;
+        }
         #orientation-overlay {
             display: none;
             position: fixed;
@@ -225,7 +254,6 @@
             align-items: center;
             text-align: center;
         }
-
         #orientation-overlay p {
             color: white;
             font-size: 24px;
@@ -339,9 +367,12 @@
 
         // Enforce landscape orientation on mobile devices
         function enforceLandscape() {
-            if (window.innerHeight > window.innerWidth) {
+            var isPortrait = window.innerHeight > window.innerWidth;
+            if (isPortrait) {
+                container.classList.add('landscape');
                 orientationOverlay.style.display = 'flex';
             } else {
+                container.classList.remove('landscape');
                 orientationOverlay.style.display = 'none';
             }
         }
