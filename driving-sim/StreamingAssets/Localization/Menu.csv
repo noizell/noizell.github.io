@@ -1,10 +1,10 @@
 Key,English,Bahasa,Chinese,Bengali,Tamil
 leaderboard,Leaderboard,Papan Peringkat,排行榜,লিডারবোর্ড,முன்னணி பலகை
-leaderboard_rank,Rank,Peringkat,排名,র‍্যাঙ্ক,தரம்
+leaderboard_rank,Rank,Peringkat,排名,র‍্যাঙ্ক,தரவரிசை
 leaderboard_name,Name,Nama,名字,নাম,பெயர்
 leaderboard_score,Score,Skor,得分,স্কোর,மதிப்பெண்
-main_start_game,"Start","Mulai","开始游戏","শুরুগেম","தொடங்கு
-விளையாட்டு"
+main_start_game,Start,"Mulai",开始,শুরু,"
+தொடங்கு"
 main_play_game,Play,Main,开始,খেলা,விளையாடு
 main_select,Select,Pilih,选择,নির্বাচন,தேர்வு செய்
 vehicle_selection_bike,Bike,Sepeda Motor,自行车,বাইক,மோட்டார் சைக்கிள்
@@ -23,4 +23,3 @@ setting_audio_master,Master Volume,Volume Utama,主音量,মাস্টার 
 setting_audio_bgm,BGM Volume,Volume Musik Latar,背景音乐音量,ব্যাকগ্রাউন্ড মিউজিক ভলিউম,பின்னணி இசை ஒலி
 setting_audio_sfx,SFX Volume,Volume Efek Suara,音效音量,বিশেষ প্রভাব ভলিউম,சிறப்பு ஒலி
 setting_audio_ui_sfx,UI SFX Volume,Volume Efek Suara Antarmuka Pengguna,用户界面音效音量,ইউআই বিশেষ প্রভাব ভলিউম,பயனர் இடைமுக சிறப்பு ஒலி
-btn_return_home,Return to Home,Kembali ke Menu Utama,返回主页,বাড়িতে ফিরে যান,முகப்புக்கு திரும்பு
