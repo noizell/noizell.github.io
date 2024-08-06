@@ -236,7 +236,7 @@
             height: 100%;
             transform-origin: center;
         }
-        .landscape #unity-canvas {
+        .portrait #unity-canvas {
             transform: rotate(90deg) translate(0, -100%);
             width: 100vh;
             height: 100vw;
@@ -271,26 +271,24 @@
         </div>
         <div id="unity-warning"></div>
         <div id="unity-footer">
-            <!-- <div id="unity-webgl-logo"></div> -->
-            <!--<div id="unity-fullscreen-button"></div>-->
             <div id="unity-build-title">Driving Sim</div>
         </div>
     </div>
-    <!-- <div id="orientation-overlay"> -->
-        <!-- <p>Please rotate your device to landscape mode.</p> -->
-    <!-- </div> -->
+<!--     <div id="orientation-overlay">
+        <p>Please rotate your device to landscape mode.</p>
+    </div> -->
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
     <script>
         var firebaseConfig = {
-            apiKey: "AIzaSyDVAJuaR002HKJARnU0CVKix0K4VL5aKBU",
-            authDomain: "drive-sim-f77b1.firebaseapp.com",
-            databaseURL: "https://drive-sim-f77b1-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "drive-sim-f77b1",
-            storageBucket: "drive-sim-f77b1.appspot.com",
-            messagingSenderId: "445012339241",
-            appId: "1:445012339241:web:614933de0cb92e56ca4a38"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
         // Initialize Firebase
@@ -323,7 +321,6 @@
             };
             
             var jsonString = JSON.stringify(data);
-            //unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
             if (window.unityInstance) {
                 unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
             }
@@ -337,16 +334,8 @@
         var canvas = document.querySelector("#unity-canvas");
         var loadingBar = document.querySelector("#unity-loading-bar");
         var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        //var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-        var warningBanner = document.querySelector("#unity-warning");
         var orientationOverlay = document.querySelector("#orientation-overlay");
 
-        // Shows a temporary message banner/ribbon for a few seconds, or
-        // a permanent error message on top of the canvas if type=='error'.
-        // If type=='warning', a yellow highlight color is used.
-        // Modify or remove this function to customize the visually presented
-        // way that non-critical warnings and error messages are presented to the
-        // user.
         function unityShowBanner(msg, type) {
             function updateBannerVisibility() {
                 warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -365,14 +354,13 @@
             updateBannerVisibility();
         }
 
-        // Enforce landscape orientation on mobile devices
         function enforceLandscape() {
             var isPortrait = window.innerHeight > window.innerWidth;
             if (isPortrait) {
-                container.classList.add('landscape');
+                container.classList.add('portrait');
                 orientationOverlay.style.display = 'flex';
             } else {
-                container.classList.remove('landscape');
+                container.classList.remove('portrait');
                 orientationOverlay.style.display = 'none';
             }
         }
@@ -395,17 +383,8 @@
             showBanner: unityShowBanner,
         };
 
-        // By default Unity keeps WebGL canvas render target size matched with
-        // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-        // Set this to false if you want to decouple this synchronization from
-        // happening inside the engine, and you would instead like to size up
-        // the canvas DOM size and WebGL render target sizes yourself.
-        // config.matchWebGLToCanvasSize = false;
-
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             container.className = "unity-mobile";
-            // Avoid draining fillrate performance on mobile devices,
-            // and default/override low DPI mode on mobile browsers.
             config.devicePixelRatio = 1;
         } else {
             canvas.style.width = "1366px";
@@ -421,7 +400,6 @@
             }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 window.unityInstance = unityInstance;
-<!--                 fullscreenButton.onclick = () => { unityInstance.SetFullscreen(1); }; -->
             }).catch((message) => {
                 alert(message);
             });
