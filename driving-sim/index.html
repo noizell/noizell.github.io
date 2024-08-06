@@ -276,9 +276,9 @@
             <div id="unity-build-title">Driving Sim</div>
         </div>
     </div>
-    <div id="orientation-overlay">
-        <p>Please rotate your device to landscape mode.</p>
-    </div>
+    <!-- <div id="orientation-overlay"> -->
+        <!-- <p>Please rotate your device to landscape mode.</p> -->
+    <!-- </div> -->
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
@@ -337,7 +337,7 @@
         var canvas = document.querySelector("#unity-canvas");
         var loadingBar = document.querySelector("#unity-loading-bar");
         var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+        //var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
         var orientationOverlay = document.querySelector("#orientation-overlay");
 
@@ -421,9 +421,7 @@
             }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 window.unityInstance = unityInstance;
-                fullscreenButton.onclick = () => {
-                    unityInstance.SetFullscreen(1);
-                };
+<!--                 fullscreenButton.onclick = () => { unityInstance.SetFullscreen(1); }; -->
             }).catch((message) => {
                 alert(message);
             });
