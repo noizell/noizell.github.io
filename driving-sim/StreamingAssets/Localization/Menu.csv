@@ -23,3 +23,4 @@ setting_audio_master,Master Volume,Volume Utama,主音量,মাস্টার 
 setting_audio_bgm,BGM Volume,Volume Musik Latar,背景音乐音量,ব্যাকগ্রাউন্ড মিউজিক ভলিউম,பின்னணி இசை ஒலி
 setting_audio_sfx,SFX Volume,Volume Efek Suara,音效音量,বিশেষ প্রভাব ভলিউম,சிறப்பு ஒலி
 setting_audio_ui_sfx,UI SFX Volume,Volume Efek Suara Antarmuka Pengguna,用户界面音效音量,ইউআই বিশেষ প্রভাব ভলিউম,பயனர் இடைமுக சிறப்பு ஒலி
+rotation_warning,Please rotate your device to landscape mode.,Silakan putar perangkat Anda ke mode landscape.,请将您的设备旋转到横屏模式。,অনুগ্রহ করে আপনার ডিভাইসটি ল্যান্ডস্কেপ মোডে ঘুরিয়ে দিন।,உங்கள் சாதனத்தை பரந்ததிரையில் திருப்பவும்.
