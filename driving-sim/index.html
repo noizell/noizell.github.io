@@ -370,8 +370,20 @@
                 }
             }
 
-            window.addEventListener('resize', enforceLandscape);
-            window.addEventListener('load', enforceLandscape);
+            // Detect fullscreen change
+            function fullscreenChange() {
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+                    enforceLandscape();
+                    window.addEventListener('resize', enforceLandscape);
+                } else {
+                    window.removeEventListener('resize', enforceLandscape);
+                }
+            }
+
+            document.addEventListener('fullscreenchange', fullscreenChange);
+            document.addEventListener('webkitfullscreenchange', fullscreenChange);
+            document.addEventListener('mozfullscreenchange', fullscreenChange);
+            document.addEventListener('MSFullscreenChange', fullscreenChange);
 
             enforceLandscape(); // Call the function initially to set the correct orientation state
 
