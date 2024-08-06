@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
@@ -147,7 +147,7 @@
         window.addEventListener('resize', enforceLandscape);
         window.addEventListener('load', enforceLandscape);
 		
-        var mode = "-stable";
+        var mode = "";
         var buildUrl = "Build";
 		var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
         var config = {
@@ -200,9 +200,9 @@
     </script>
 </body>
 </html>
--->
 
-<!DOCTYPE html>
+
+<!-- <!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
@@ -273,6 +273,9 @@
         <div id="unity-footer">
             <div id="unity-build-title">Driving Sim</div>
         </div>
+    </div>
+    <div id="orientation-overlay">
+        <p>Please rotate your device to landscape mode.</p>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
@@ -384,7 +387,7 @@
 
             enforceLandscape(); // Call the function initially to set the correct orientation state
 
-            var mode = "";
+            var mode = "-stable";
             var buildUrl = "Build";
             var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
             var config = {
@@ -425,3 +428,4 @@
     </script>
 </body>
 </html>
+ -->
