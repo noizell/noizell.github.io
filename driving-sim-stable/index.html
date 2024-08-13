@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
@@ -186,5 +186,59 @@
         document.body.appendChild(script);
 
     </script>
+</body>
+</html>
+ -->
+ 
+ <!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Driving Sim</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <style>
+        #orientation-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #orientation-overlay p {
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas" width="1366" height="768"></canvas>
+        <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+            </div>
+        </div>
+        <div id="unity-warning"></div>
+        <div id="unity-footer">
+            <div id="unity-webgl-logo"></div>
+            <div id="unity-fullscreen-button"></div>
+            <div id="unity-build-title">Driving Sim</div>
+        </div>
+    </div>
+    <div id="orientation-overlay">
+        <p>Please rotate your device to landscape mode.</p>
+    </div>
+    <script src="Build/main.js"></script>
 </body>
 </html>
