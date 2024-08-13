@@ -47,23 +47,7 @@
     <div id="orientation-overlay">
         <p>Please rotate your device to landscape mode.</p>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
     <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyDVAJuaR002HKJARnU0CVKix0K4VL5aKBU",
-            authDomain: "drive-sim-f77b1.firebaseapp.com",
-            databaseURL: "https://drive-sim-f77b1-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "drive-sim-f77b1",
-            storageBucket: "drive-sim-f77b1.appspot.com",
-            messagingSenderId: "445012339241",
-            appId: "1:445012339241:web:614933de0cb92e56ca4a38"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
         // Function to handle fullscreen requests
         function requestFullscreen() {
             var elem = document.documentElement;
@@ -77,27 +61,39 @@
                 elem.msRequestFullscreen();
             }
         }
-    </script>
-    <script>
+
+        // Debounce function to limit the rate at which a function can fire
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                const context = this, args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        // Function to notify resolution change and send aspect ratio to Unity
         function notifyResolutionChange() {
             var width = window.innerWidth;
             var height = window.innerHeight;
-			var aspectRatio = width / height;
+            var aspectRatio = width / height;
 
-			var data = {
+            var data = {
                 Width: width,
                 Height: height,
                 AspectRatio: aspectRatio
             };
             
-			var jsonString = JSON.stringify(data);
-            //unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
-			if (window.unityInstance) {
+            var jsonString = JSON.stringify(data);
+            if (window.unityInstance) {
                 unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
             }
-		}
+        }
 
-        window.addEventListener('resize', notifyResolutionChange);
+        // Debounced version of the notifyResolutionChange function
+        var debouncedNotifyResolutionChange = debounce(notifyResolutionChange, 250);
+
+        window.addEventListener('resize', debouncedNotifyResolutionChange);
         window.addEventListener('load', notifyResolutionChange);
     </script>
     <script>
@@ -143,13 +139,12 @@
             }
         }
 
-
         window.addEventListener('resize', enforceLandscape);
         window.addEventListener('load', enforceLandscape);
 		
         var mode = "";
         var buildUrl = "Build";
-		var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
+        var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
         var config = {
             dataUrl: `${buildUrl}/driving-sim${mode}.data`,
             frameworkUrl: `${buildUrl}/driving-sim${mode}.framework.js`,
@@ -161,13 +156,6 @@
             productVersion: "0.0.1",
             showBanner: unityShowBanner,
         };
-
-        // By default Unity keeps WebGL canvas render target size matched with
-        // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-        // Set this to false if you want to decouple this synchronization from
-        // happening inside the engine, and you would instead like to size up
-        // the canvas DOM size and WebGL render target sizes yourself.
-        // config.matchWebGLToCanvasSize = false;
 
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             container.className = "unity-mobile";
@@ -200,232 +188,3 @@
     </script>
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="en-us">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Driving Sim</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-        }
-        #unity-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #unity-canvas {
-            width: 100%;
-            height: 100%;
-            transform-origin: center;
-        }
-        .portrait #unity-canvas {
-            transform: rotate(90deg) translate(0, -100%);
-            width: 100vh;
-            height: 100vw;
-        }
-        #orientation-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        #orientation-overlay p {
-            color: white;
-            font-size: 24px;
-        }
-    </style>
-</head>
-<body>
-    <div id="unity-container" class="unity-desktop">
-        <canvas id="unity-canvas" width="1366" height="768"></canvas>
-        <div id="unity-loading-bar">
-            <div id="unity-logo"></div>
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
-            </div>
-        </div>
-        <div id="unity-warning"></div>
-        <div id="unity-footer">
-            <div id="unity-build-title">Driving Sim</div>
-        </div>
-    </div>
-    <div id="orientation-overlay">
-        <p>Please rotate your device to landscape mode.</p>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
-    <script>
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Function to handle fullscreen requests
-        function requestFullscreen() {
-            var elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // Firefox
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { // IE/Edge
-                elem.msRequestFullscreen();
-            }
-        }
-    </script>
-    <script>
-        function notifyResolutionChange() {
-            var width = window.innerWidth;
-            var height = window.innerHeight;
-            var aspectRatio = width / height;
-
-            var data = {
-                Width: width,
-                Height: height,
-                AspectRatio: aspectRatio
-            };
-            
-            var jsonString = JSON.stringify(data);
-            if (window.unityInstance) {
-                unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
-            }
-        }
-
-        window.addEventListener('resize', notifyResolutionChange);
-        window.addEventListener('load', notifyResolutionChange);
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var container = document.querySelector("#unity-container");
-            var canvas = document.querySelector("#unity-canvas");
-            var loadingBar = document.querySelector("#unity-loading-bar");
-            var progressBarFull = document.querySelector("#unity-progress-bar-full");
-            var orientationOverlay = document.querySelector("#orientation-overlay");
-
-            function unityShowBanner(msg, type) {
-                function updateBannerVisibility() {
-                    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-                }
-                var div = document.createElement('div');
-                div.innerHTML = msg;
-                warningBanner.appendChild(div);
-                if (type == 'error') div.style = 'background: red; padding: 10px;';
-                else {
-                    if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-                    setTimeout(function() {
-                        warningBanner.removeChild(div);
-                        updateBannerVisibility();
-                    }, 5000);
-                }
-                updateBannerVisibility();
-            }
-
-            function enforceLandscape() {
-                var isPortrait = window.innerHeight > window.innerWidth;
-                if (isPortrait) {
-                    container.classList.add('portrait');
-                    if (orientationOverlay) {
-                        orientationOverlay.style.display = 'flex';
-                    }
-                } else {
-                    container.classList.remove('portrait');
-                    if (orientationOverlay) {
-                        orientationOverlay.style.display = 'none';
-                    }
-                }
-            }
-
-            // Detect fullscreen change
-            function fullscreenChange() {
-                if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-                    enforceLandscape();
-                    window.addEventListener('resize', enforceLandscape);
-                } else {
-                    window.removeEventListener('resize', enforceLandscape);
-                }
-            }
-
-            document.addEventListener('fullscreenchange', fullscreenChange);
-            document.addEventListener('webkitfullscreenchange', fullscreenChange);
-            document.addEventListener('mozfullscreenchange', fullscreenChange);
-            document.addEventListener('MSFullscreenChange', fullscreenChange);
-
-            enforceLandscape(); // Call the function initially to set the correct orientation state
-
-            var mode = "-stable";
-            var buildUrl = "Build";
-            var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
-            var config = {
-                dataUrl: `${buildUrl}/driving-sim${mode}.data`,
-                frameworkUrl: `${buildUrl}/driving-sim${mode}.framework.js`,
-                codeUrl: `${buildUrl}/driving-sim${mode}.wasm`,
-                symbolsUrl: `${buildUrl}/driving-sim${mode}.symbols.json`,
-                streamingAssetsUrl: "StreamingAssets",
-                companyName: "Satriver Studio",
-                productName: "Driving Sim",
-                productVersion: "0.0.1",
-                showBanner: unityShowBanner,
-            };
-
-            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                container.className = "unity-mobile";
-                config.devicePixelRatio = 1;
-            } else {
-                canvas.style.width = "1366px";
-                canvas.style.height = "768px";
-            }
-            loadingBar.style.display = "block";
-
-            var script = document.createElement("script");
-            script.src = loaderUrl;
-            script.onload = () => {
-                createUnityInstance(canvas, config, (progress) => {
-                    progressBarFull.style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    window.unityInstance = unityInstance;
-                }).catch((message) => {
-                    alert(message);
-                });
-            };
-            document.body.appendChild(script);
-        });
-    </script>
-</body>
-</html>
- -->
