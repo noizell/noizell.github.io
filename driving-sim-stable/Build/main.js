@@ -1,1 +1,133 @@
-function n(){var n=document.documentElement;if(n.requestFullscreen){n.requestFullscreen()}else if(n.mozRequestFullScreen){n.mozRequestFullScreen()}else if(n.webkitRequestFullscreen){n.webkitRequestFullscreen()}else if(n.msRequestFullscreen){n.msRequestFullscreen()}}function i(e,o){let r;return function(){const n=this,i=arguments;clearTimeout(r);r=setTimeout(()=>e.apply(n,i),o)}}function e(){var n=window.innerWidth;var i=window.innerHeight;var e=n/i;var o={i:n,o:i,t:e};var r=JSON.stringify(o);if(window.u){unityInstance.SendMessage("JS_CALLBACK","OnResolutionChange",r)}}var o=i(e,250);window.addEventListener("resize",o);window.addEventListener("load",e);var r=document.querySelector("#unity-container");var a=document.querySelector("#unity-canvas");var t=document.querySelector("#unity-loading-bar");var d=document.querySelector("#unity-progress-bar-full");var s=document.querySelector("#unity-fullscreen-button");var u=document.querySelector("#unity-warning");var c=document.querySelector("#landscape-warning");var l=document.querySelector("#orientation-overlay");function m(n,i){function e(){u.style.display=u.children.length?"block":"none"}var o=document.createElement("div");o.innerHTML=n;u.appendChild(o);if(i=="error")o.style="background: red; padding: 10px;";else{if(i=="warning")o.style="background: yellow; padding: 10px;";setTimeout(function(){u.removeChild(o);e()},5e3)}e()}function v(){if(window.innerHeight>window.innerWidth){l.style.display="flex"}else{l.style.display="none"}}window.addEventListener("resize",v);window.addEventListener("load",v);var w="-stable";var f="Build";var g=`${f}/driving-sim${w}.loader.js`;var y={l:`${f}/driving-sim${w}.data`,m:`${f}/driving-sim${w}.framework.js`,v:`${f}/driving-sim${w}.wasm`,g:`${f}/driving-sim${w}.symbols.json`,p:"StreamingAssets",$:"Satriver Studio",productName:"Driving Sim",h:"0.0.1",k:m};if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){r.className="unity-mobile";y.devicePixelRatio=1}else{a.style.width="1366px";a.style.height="768px"}t.style.display="block";var p=document.createElement("script");p.src=g;p.onload=()=>{createUnityInstance(a,y,n=>{d.style.width=100*n+"%"}).then(n=>{t.style.display="none";window.u=n;s.onclick=()=>{n.SetFullscreen(1)}})["catch"](n=>{alert(n)})};document.body.appendChild(p);
+// Function to handle fullscreen requests
+function requestFullscreen() {
+    var elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+}
+
+// Debounce function to limit the rate at which a function can fire
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
+
+// Function to notify resolution change and send aspect ratio to Unity
+function notifyResolutionChange() {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var aspectRatio = width / height;
+
+    var data = {
+        Width: width,
+        Height: height,
+        AspectRatio: aspectRatio
+    };
+    
+    var jsonString = JSON.stringify(data);
+    if (window.unityInstance) {
+        unityInstance.SendMessage('JS_CALLBACK', 'OnResolutionChange', jsonString);
+    }
+}
+
+// Debounced version of the notifyResolutionChange function
+var debouncedNotifyResolutionChange = debounce(notifyResolutionChange, 250);
+
+// Handle events
+window.addEventListener('resize', debouncedNotifyResolutionChange);
+window.addEventListener('load', notifyResolutionChange);
+
+var container = document.querySelector("#unity-container");
+var canvas = document.querySelector("#unity-canvas");
+var loadingBar = document.querySelector("#unity-loading-bar");
+var progressBarFull = document.querySelector("#unity-progress-bar-full");
+var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+var warningBanner = document.querySelector("#unity-warning");
+var landscapeWarning = document.querySelector("#landscape-warning");
+var orientationOverlay = document.querySelector("#orientation-overlay");
+
+// Shows a temporary message banner/ribbon for a few seconds, or
+// a permanent error message on top of the canvas if type=='error'.
+// If type=='warning', a yellow highlight color is used.
+function unityShowBanner(msg, type) {
+    function updateBannerVisibility() {
+        warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+    }
+    var div = document.createElement('div');
+    div.innerHTML = msg;
+    warningBanner.appendChild(div);
+    if (type == 'error') div.style = 'background: red; padding: 10px;';
+    else {
+        if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+        setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+        }, 5000);
+    }
+    updateBannerVisibility();
+}
+
+// Enforce landscape orientation on mobile devices
+function enforceLandscape() {
+    if (window.innerHeight > window.innerWidth) {
+        orientationOverlay.style.display = 'flex';
+    } else {
+        orientationOverlay.style.display = 'none';
+    }
+}
+
+window.addEventListener('resize', enforceLandscape);
+window.addEventListener('load', enforceLandscape);
+
+var mode = "-stable";
+var buildUrl = "Build";
+var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
+var config = {
+    dataUrl: `${buildUrl}/driving-sim${mode}.data`,
+    frameworkUrl: `${buildUrl}/driving-sim${mode}.framework.js`,
+    codeUrl: `${buildUrl}/driving-sim${mode}.wasm`,
+    symbolsUrl: `${buildUrl}/driving-sim${mode}.symbols.json`,
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "Satriver Studio",
+    productName: "Driving Sim",
+    productVersion: "0.0.1",
+    showBanner: unityShowBanner,
+};
+
+if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    container.className = "unity-mobile";
+    // Avoid draining fillrate performance on mobile devices,
+    // and default/override low DPI mode on mobile browsers.
+    config.devicePixelRatio = 1;
+} else {
+    canvas.style.width = "1366px";
+    canvas.style.height = "768px";
+}
+loadingBar.style.display = "block";
+
+var script = document.createElement("script");
+script.src = loaderUrl;
+script.onload = () => {
+    createUnityInstance(canvas, config, (progress) => {
+        progressBarFull.style.width = 100 * progress + "%";
+    }).then((unityInstance) => {
+        loadingBar.style.display = "none";
+        window.unityInstance = unityInstance;
+        fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+        };
+    }).catch((message) => {
+        alert(message);
+    });
+};
+document.body.appendChild(script);
