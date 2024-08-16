@@ -89,7 +89,7 @@ function enforceLandscape() {
 window.addEventListener('resize', enforceLandscape);
 window.addEventListener('load', enforceLandscape);
 
-var mode = "-stable";
+var mode="";
 var buildUrl = "Build";
 var loaderUrl = `${buildUrl}/driving-sim${mode}.loader.js`;
 var config = {
