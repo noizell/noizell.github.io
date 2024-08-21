@@ -4,5 +4,6 @@
     "FastMode": true,
     "EnableTrivia": false,
     "Language": "en",
-    "SegmentsToCompleteLoading": 8
+    "SegmentsToCompleteLoading": 5
 }
+
